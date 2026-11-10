@@ -1,0 +1,111 @@
+{
+  "evaluation_title": "Adversarial Settlement-Policy Evaluation & Validation Suite",
+  "currency_unit": "paise (integer, 100 paise = 1 INR)",
+  "evaluated_policies": [
+    "FIRST_CLAIM",
+    "GLOBAL_PRO_RATA",
+    "PAYER_LIABILITY"
+  ],
+  "experiments": {
+    "common_eligibility": {
+      "title": "Common-Eligibility Comparison (3 Distinct Valid Permits)",
+      "claims": [
+        {
+          "type": "MULE",
+          "amount_paise": 50000
+        },
+        {
+          "type": "HONEST_MERCHANT",
+          "amount_paise": 50000
+        },
+        {
+          "type": "HONEST_MERCHANT",
+          "amount_paise": 50000
+        }
+      ],
+      "total_claims_paise": 150000,
+      "available_reserve_paise": 100000,
+      "tested_permutations": 6
+    },
+    "shared_permit_conflict": {
+      "title": "Shared-Permit Double-Spending Conflict Comparison",
+      "claims": [
+        {
+          "type": "MULE",
+          "amount_paise": 50000,
+          "permit_id": "shared_p1"
+        },
+        {
+          "type": "HONEST_MERCHANT",
+          "amount_paise": 50000,
+          "permit_id": "shared_p1"
+        },
+        {
+          "type": "HONEST_MERCHANT",
+          "amount_paise": 50000,
+          "permit_id": "shared_p1"
+        }
+      ],
+      "total_claims_paise": 150000,
+      "available_reserve_paise": 100000,
+      "tested_permutations": 6
+    },
+    "experiment_b": {
+      "title": "Reserve Ratio Sensitivity",
+      "ratios": [
+        0.25,
+        0.5,
+        0.75,
+        1.0,
+        1.25
+      ],
+      "total_claim_paise": 150000,
+      "seed_count_per_ratio": 100
+    },
+    "experiment_c": {
+      "title": "Mule Concentration",
+      "mule_shares": [
+        0.0,
+        0.1,
+        0.25,
+        0.5,
+        0.75,
+        1.0
+      ],
+      "topologies": [
+        "single_mule",
+        "multi_mule"
+      ],
+      "total_claim_paise": 150000,
+      "controlled_reserve_paise": 100000,
+      "seed_count_per_config": 100
+    },
+    "experiment_d": {
+      "title": "Claim-Size Heterogeneity",
+      "configurations": [
+        "Equal_Claims",
+        "Small_Mule_Claim",
+        "Large_Mule_Claim",
+        "Unequal_Honest_Claims",
+        "Multiple_Mule_Claims"
+      ],
+      "total_claim_paise": 150000,
+      "controlled_reserve_paise": 100000,
+      "seed_count_per_config": 100
+    },
+    "account_splitting": {
+      "title": "Account-Splitting Invariance under Fixed Aggregate Claim Value",
+      "aggregate_mule_paise": 50000,
+      "k_values": [
+        1,
+        2,
+        5,
+        10
+      ],
+      "honest_claims_paise": [
+        50000,
+        50000
+      ]
+    }
+  }
+}

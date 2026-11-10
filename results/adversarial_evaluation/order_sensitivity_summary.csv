@@ -1,0 +1,7 @@
+experiment,permit_conflict_type,policy,permutations_tested,min_honest_recovery,max_honest_recovery,order_sensitivity_recovery,min_attacker_profit_paise,max_attacker_profit_paise,order_sensitivity_profit_paise,min_mule_payout_paise,max_mule_payout_paise,order_sensitivity_mule_payout_paise,min_reserve_utilization,max_reserve_utilization
+Experiment_A,distinct_permits,FIRST_CLAIM,6,0.500000,1.000000,0.500000,0,50000,50000,0,50000,50000,1.000000,1.000000
+Experiment_A,distinct_permits,GLOBAL_PRO_RATA,6,0.666660,0.666670,0.000010,33333,33334,1,33333,33334,1,1.000000,1.000000
+Experiment_A,distinct_permits,PAYER_LIABILITY,6,0.500000,1.000000,0.500000,0,50000,50000,0,50000,50000,1.000000,1.000000
+Experiment_A,same_permit,FIRST_CLAIM,6,0.000000,0.500000,0.500000,50000,100000,50000,0,50000,50000,0.500000,0.500000
+Experiment_A,same_permit,GLOBAL_PRO_RATA,6,0.666660,0.666670,0.000010,33333,33334,1,33333,33334,1,1.000000,1.000000
+Experiment_A,same_permit,PAYER_LIABILITY,6,0.500000,1.000000,0.500000,0,50000,50000,0,50000,50000,1.000000,1.000000

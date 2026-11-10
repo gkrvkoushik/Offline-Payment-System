@@ -1,0 +1,4 @@
+experiment,policy,permutations_tested,mean_submitted_claims,mean_eligible_claims,mean_rejected_claims,mean_claims_considered,min_honest_recovery,max_honest_recovery,order_sensitivity_recovery,min_attacker_profit_paise,max_attacker_profit_paise,order_sensitivity_profit_paise,min_mule_payout_paise,max_mule_payout_paise
+Shared_Permit_Conflict,FIRST_CLAIM,6,3.000000,3.000000,2.000000,1.000000,0.000000,0.500000,0.500000,50000,100000,50000,0,50000
+Shared_Permit_Conflict,GLOBAL_PRO_RATA,6,3.000000,3.000000,0.000000,3.000000,0.666660,0.666670,0.000010,33333,33334,1,33333,33334
+Shared_Permit_Conflict,PAYER_LIABILITY,6,3.000000,3.000000,0.000000,3.000000,0.500000,1.000000,0.500000,0,50000,50000,0,50000

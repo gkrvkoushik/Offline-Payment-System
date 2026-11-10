@@ -1,0 +1,28 @@
+{
+  "execution_timestamp": "2026-11-09T10:58:37Z",
+  "output_directory": "results/adversarial_evaluation",
+  "generated_csv_files": [
+    "common_eligibility_runs.csv",
+    "common_eligibility_summary.csv",
+    "shared_permit_runs.csv",
+    "shared_permit_summary.csv",
+    "reserve_ratio_runs.csv",
+    "reserve_ratio_summary.csv",
+    "mule_concentration_runs.csv",
+    "mule_concentration_summary.csv",
+    "claim_size_runs.csv",
+    "claim_size_summary.csv",
+    "small_mule_analytical_reconciliation.csv",
+    "account_splitting_runs.csv",
+    "account_splitting_summary.csv"
+  ],
+  "economic_profit_model": {
+    "formula": "Net Economic Profit = (Goods Value Acquired + Recoverable Mule Proceeds) - (Payer-Owned Debit + Actual Attacker Costs)",
+    "goods_value_acquired": "Face value of goods/services released at POS by honest merchants upon offline verification",
+    "mule_account_payout": "Gross nominal settlement disbursed to mule accounts",
+    "frozen_or_reversed_funds": "Funds clawed back or frozen prior to cashout",
+    "recoverable_mule_proceeds": "mule_account_payout - frozen_or_reversed_funds",
+    "payer_owned_debit": "C + H actual funds disbursed from payer balances (0 if victim)",
+    "actual_attacker_costs": "Operational expenditure incurred by adversary"
+  }
+}

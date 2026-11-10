@@ -1,0 +1,381 @@
+{
+  "contractName": "PaymentAuditAnchor",
+  "abi": [
+    {
+      "inputs": [],
+      "stateMutability": "nonpayable",
+      "type": "constructor"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "batchId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "AnchorNotFound",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "batchId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "BatchAlreadyExists",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidBatchId",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidMerkleRoot",
+      "type": "error"
+    },
+    {
+      "inputs": [],
+      "name": "InvalidZeroAddress",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "submitter",
+          "type": "address"
+        }
+      ],
+      "name": "SubmitterAlreadyAuthorized",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "submitter",
+          "type": "address"
+        }
+      ],
+      "name": "SubmitterNotAuthorized",
+      "type": "error"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "caller",
+          "type": "address"
+        }
+      ],
+      "name": "UnauthorizedCaller",
+      "type": "error"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "batchId",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "bytes32",
+          "name": "merkleRoot",
+          "type": "bytes32"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "submitter",
+          "type": "address"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint64",
+          "name": "blockTimestamp",
+          "type": "uint64"
+        },
+        {
+          "indexed": false,
+          "internalType": "uint32",
+          "name": "schemaVersion",
+          "type": "uint32"
+        },
+        {
+          "indexed": false,
+          "internalType": "bytes32",
+          "name": "metadataHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "AuditBatchAnchored",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "previousOwner",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "OwnershipTransferred",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "submitter",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "authorizedBy",
+          "type": "address"
+        }
+      ],
+      "name": "SubmitterAuthorized",
+      "type": "event"
+    },
+    {
+      "anonymous": false,
+      "inputs": [
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "submitter",
+          "type": "address"
+        },
+        {
+          "indexed": true,
+          "internalType": "address",
+          "name": "revokedBy",
+          "type": "address"
+        }
+      ],
+      "name": "SubmitterRevoked",
+      "type": "event"
+    },
+    {
+      "inputs": [],
+      "name": "SCHEMA_VERSION",
+      "outputs": [
+        {
+          "internalType": "uint32",
+          "name": "",
+          "type": "uint32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "submitter",
+          "type": "address"
+        }
+      ],
+      "name": "addAuthorizedSubmitter",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "batchId",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "merkleRoot",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "metadataHash",
+          "type": "bytes32"
+        }
+      ],
+      "name": "anchorBatch",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "batchId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "getAnchor",
+      "outputs": [
+        {
+          "internalType": "bytes32",
+          "name": "merkleRoot",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "address",
+          "name": "submitter",
+          "type": "address"
+        },
+        {
+          "internalType": "uint64",
+          "name": "blockTimestamp",
+          "type": "uint64"
+        },
+        {
+          "internalType": "uint32",
+          "name": "schemaVersion",
+          "type": "uint32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "metadataHash",
+          "type": "bytes32"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "name": "isAuthorizedSubmitter",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "batchId",
+          "type": "bytes32"
+        }
+      ],
+      "name": "isBatchAnchored",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [],
+      "name": "owner",
+      "outputs": [
+        {
+          "internalType": "address",
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "submitter",
+          "type": "address"
+        }
+      ],
+      "name": "removeAuthorizedSubmitter",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "address",
+          "name": "newOwner",
+          "type": "address"
+        }
+      ],
+      "name": "transferOwnership",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    },
+    {
+      "inputs": [
+        {
+          "internalType": "bytes32",
+          "name": "batchId",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32",
+          "name": "leafHash",
+          "type": "bytes32"
+        },
+        {
+          "internalType": "bytes32[]",
+          "name": "proof",
+          "type": "bytes32[]"
+        },
+        {
+          "internalType": "bool[]",
+          "name": "isLeft",
+          "type": "bool[]"
+        }
+      ],
+      "name": "verifyInclusion",
+      "outputs": [
+        {
+          "internalType": "bool",
+          "name": "",
+          "type": "bool"
+        }
+      ],
+      "stateMutability": "view",
+      "type": "function"
+    }
+  ],
+  "bytecode": "0x608060405234801561000f575f80fd5b505f80546001600160a01b031916339081178255808252600160208190526040808420805460ff1916909217909155519091907f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e0908290a3604051339081907f821ef5a153f75a2c02c8435df08b3960b52f5a06de95a11255e70f5473db355e905f90a3610a57806100a05f395ff3fe608060405234801561000f575f80fd5b506004361061009b575f3560e01c8063a360887d11610063578063a360887d14610195578063c363a5b7146101aa578063d678009f146101bd578063ef80e33c146101d0578063f2fde38b146101e3575f80fd5b806309479e8c1461009f5780633bfe5de9146100d65780636233b32a146100f75780637feb51d9146101145780638da5cb5b1461016b575b5f80fd5b6100c16100ad366004610855565b60016020525f908152604090205460ff1681565b60405190151581526020015b60405180910390f35b6100c16100e4366004610882565b5f90815260026020526040902054151590565b6100ff600181565b60405163ffffffff90911681526020016100cd565b610127610122366004610882565b6101f6565b604080519586526001600160a01b03909416602086015267ffffffffffffffff9092169284019290925263ffffffff9091166060830152608082015260a0016100cd565b5f5461017d906001600160a01b031681565b6040516001600160a01b0390911681526020016100cd565b6101a86101a3366004610899565b6102b3565b005b6100c16101b836600461090a565b610476565b6101a86101cb366004610855565b610613565b6101a86101de366004610855565b6106fa565b6101a86101f1366004610855565b6107b3565b5f818152600260208181526040808420815160a081018352815480825260018301546001600160a01b03811695830195909552600160a01b850467ffffffffffffffff1693820193909352600160e01b90930463ffffffff16606084015290920154608082015282918291829182919061028b57604051633340d4c960e21b8152600481018890526024015b60405180910390fd5b8051602082015160408301516060840151608090940151929a91995097509195509350915050565b335f9081526001602052604090205460ff161580156102dc57505f546001600160a01b03163314155b156102fc5760405163d86ad9cf60e01b8152336004820152602401610282565b8261031a57604051633b98df6560e01b815260040160405180910390fd5b8161033857604051639dd854d360e01b815260040160405180910390fd5b5f8381526002602052604090205415610367576040516354231b5160e11b815260048101849052602401610282565b6040805160a08101825283815233602080830182815267ffffffffffffffff42818116868801908152600160608801818152608089018b81525f8e81526002988990528b902099518a55955189830180549451925163ffffffff16600160e01b026001600160e01b0393909716600160a01b026001600160e01b03199095166001600160a01b039290921691909117939093171693909317905591519490920193909355925191929091859187917fd4697be9c481b7fb065a16e6e000551b1ba7a900e9b76ed94e5d767ce5f1dda99161046891879190899067ffffffffffffffff93909316835263ffffffff919091166020830152604082015260600190565b60405180910390a450505050565b5f8681526002602052604081205480610492575f915050610609565b8483146104a2575f915050610609565b865f5b86811015610604575f8888838181106104c0576104c0610987565b9050602002013590508686838181106104db576104db610987565b90506020020160208101906104f0919061099b565b1561057557604051600160f81b6020820152602181018290526041810184905260029060610160408051601f1981840301815290829052610530916109ba565b602060405180830381855afa15801561054b573d5f803e3d5ffd5b5050506040513d601f19601f8201168201806040525081019061056e91906109e6565b92506105f1565b604051600160f81b6020820152602181018490526041810182905260029060610160408051601f19818403018152908290526105b0916109ba565b602060405180830381855afa1580156105cb573d5f803e3d5ffd5b5050506040513d601f19601f820116820180604052508101906105ee91906109e6565b92505b50806105fc816109fd565b9150506104a5565b501490505b9695505050505050565b5f546001600160a01b0316331461063f5760405163d86ad9cf60e01b8152336004820152602401610282565b6001600160a01b0381166106665760405163f6b2911f60e01b815260040160405180910390fd5b6001600160a01b0381165f9081526001602052604090205460ff16156106aa57604051632a1ee54760e11b81526001600160a01b0382166004820152602401610282565b6001600160a01b0381165f818152600160208190526040808320805460ff1916909217909155513392917f821ef5a153f75a2c02c8435df08b3960b52f5a06de95a11255e70f5473db355e91a350565b5f546001600160a01b031633146107265760405163d86ad9cf60e01b8152336004820152602401610282565b6001600160a01b0381165f9081526001602052604090205460ff1661076957604051639e7c2bf160e01b81526001600160a01b0382166004820152602401610282565b6001600160a01b0381165f81815260016020526040808220805460ff19169055513392917fdffe209364ed5693fd5adc6a5984edda7e55fcf2e15f679d06f832ab93915d4f91a350565b5f546001600160a01b031633146107df5760405163d86ad9cf60e01b8152336004820152602401610282565b6001600160a01b0381166108065760405163f6b2911f60e01b815260040160405180910390fd5b5f80546001600160a01b038381166001600160a01b0319831681178455604051919092169283917f8be0079c531659141344cd1fd0a4f28419497f9722a3daafe3b4186f6b6457e09190a35050565b5f60208284031215610865575f80fd5b81356001600160a01b038116811461087b575f80fd5b9392505050565b5f60208284031215610892575f80fd5b5035919050565b5f805f606084860312156108ab575f80fd5b505081359360208301359350604090920135919050565b5f8083601f8401126108d2575f80fd5b50813567ffffffffffffffff8111156108e9575f80fd5b6020830191508360208260051b8501011115610903575f80fd5b9250929050565b5f805f805f806080878903121561091f575f80fd5b8635955060208701359450604087013567ffffffffffffffff80821115610944575f80fd5b6109508a838b016108c2565b90965094506060890135915080821115610968575f80fd5b5061097589828a016108c2565b979a9699509497509295939492505050565b634e487b7160e01b5f52603260045260245ffd5b5f602082840312156109ab575f80fd5b8135801515811461087b575f80fd5b5f82515f5b818110156109d957602081860181015185830152016109bf565b505f920191825250919050565b5f602082840312156109f6575f80fd5b5051919050565b5f60018201610a1a57634e487b7160e01b5f52601160045260245ffd5b506001019056fea2646970667358221220bb3a1ed591ca4402072fef4cc7cd2b614709b4a380532ff60742d0cfb2a19f2d64736f6c63430008140033",
+  "compilerVersion": "0.8.20"
+}

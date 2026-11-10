@@ -1,0 +1,26 @@
+{
+  "experiment_id": "EXP-07",
+  "title": "Macro Claim-Ordering Strategies Across Arrival Regimes",
+  "research_question": "RQ1 - Claim Ordering",
+  "tested_policies": [
+    "FIRST_CLAIM",
+    "GLOBAL_PRO_RATA",
+    "PAYER_LIABILITY"
+  ],
+  "batch_sizes": [
+    10,
+    50,
+    100
+  ],
+  "seed_count": 30,
+  "mule_claim_share": 0.5,
+  "reserve_coverage_ratio": 0.5,
+  "claim_denomination_paise": 50000,
+  "ordering_strategies": {
+    "FIFO": "Interleaved natural submission order alternating mule and honest claims",
+    "Random": "Stochastic permutation seeded by 70000 + N*1000 + seed",
+    "Mule_First": "Adversary front-running sensitivity bound (all mule claims arrive before honest claims)",
+    "Honest_First": "Protective clearinghouse ingestion bound (all honest claims arrive before mule claims)"
+  },
+  "timestamp": "2026-11-09T12:38:08Z"
+}

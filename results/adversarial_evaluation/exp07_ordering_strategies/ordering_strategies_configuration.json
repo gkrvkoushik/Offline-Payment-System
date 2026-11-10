@@ -1,0 +1,36 @@
+{
+  "experiment_id": "EXP-07",
+  "title": "Macro Claim-Ordering Strategies Across Arrival Regimes",
+  "research_question": "RQ1 - Claim Ordering",
+  "tested_policies": [
+    "FIRST_CLAIM",
+    "GLOBAL_PRO_RATA",
+    "PAYER_LIABILITY"
+  ],
+  "batch_sizes": [
+    10,
+    50,
+    100
+  ],
+  "seed_count": 30,
+  "mule_claim_share": 0.5,
+  "reserve_coverage_ratio": 0.5,
+  "claim_denomination_paise": 50000,
+  "arrival_generation": {
+    "population_design": "Claimant population generated independently of arrival ordering (N_mule and N_honest equal, 50,000 paise each)",
+    "deterministic_arrival_seed": "42 + N",
+    "arrival_property": "Neutral, deterministic original arrival sequence where mule and honest claims are interspersed independently of claimant category"
+  },
+  "ordering_strategies": {
+    "GENUINE_FIFO": "Preserves neutral deterministic original arrival sequence without reordering or sorting by category",
+    "INTERLEAVED_FIFO": "Synthetic interleaved submission order alternating mule and honest claims",
+    "RANDOM": "Stochastic permutation seeded by 70000 + N*1000 + seed",
+    "MULE_FIRST": "Adversary front-running sensitivity bound (all mule claims arrive before honest claims)",
+    "HONEST_FIRST": "Protective clearinghouse ingestion bound (all honest claims arrive before mule claims)"
+  },
+  "statistical_methodology": {
+    "within_regime_variability": "Computed across seeds for each strategy; zero variability for deterministic strategies is explicitly marked as fixed sequence artifact",
+    "across_regime_sensitivity": "OS_across = max(mean metric across 5 regimes) - min(mean metric across 5 regimes)"
+  },
+  "timestamp": "2026-11-09T13:58:14Z"
+}

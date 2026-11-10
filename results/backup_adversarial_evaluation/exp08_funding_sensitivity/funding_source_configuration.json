@@ -1,0 +1,90 @@
+{
+  "experiment_id": "EXP-08",
+  "title": "Funding-Source Composition Sensitivity (C:H:F Sweep holding S constant)",
+  "research_question": "RQ5 - Funding Tier Composition",
+  "total_reserve_paise": 100000,
+  "tested_policies": [
+    "FIRST_CLAIM",
+    "GLOBAL_PRO_RATA",
+    "PAYER_LIABILITY"
+  ],
+  "compositions": [
+    {
+      "name": "100C-0H-0F",
+      "C": 100000,
+      "H": 0,
+      "F": 0
+    },
+    {
+      "name": "80C-20H-0F",
+      "C": 80000,
+      "H": 20000,
+      "F": 0
+    },
+    {
+      "name": "50C-50H-0F",
+      "C": 50000,
+      "H": 50000,
+      "F": 0
+    },
+    {
+      "name": "20C-80H-0F",
+      "C": 20000,
+      "H": 80000,
+      "F": 0
+    },
+    {
+      "name": "0C-100H-0F",
+      "C": 0,
+      "H": 100000,
+      "F": 0
+    },
+    {
+      "name": "33C-33H-33F",
+      "C": 33334,
+      "H": 33333,
+      "F": 33333
+    },
+    {
+      "name": "40C-20H-40F",
+      "C": 40000,
+      "H": 20000,
+      "F": 40000
+    },
+    {
+      "name": "20C-10H-70F",
+      "C": 20000,
+      "H": 10000,
+      "F": 70000
+    },
+    {
+      "name": "10C-0H-90F",
+      "C": 10000,
+      "H": 0,
+      "F": 90000
+    },
+    {
+      "name": "0C-0H-100F",
+      "C": 0,
+      "H": 0,
+      "F": 100000
+    },
+    {
+      "name": "0C-50H-50F",
+      "C": 0,
+      "H": 50000,
+      "F": 50000
+    }
+  ],
+  "scenarios": [
+    "malicious_payer",
+    "compromised_victim",
+    "honest_payer"
+  ],
+  "permutations_tested": 6,
+  "claim_denomination_paise": 50000,
+  "total_claims_count": 3,
+  "mule_claims_count": 1,
+  "honest_claims_count": 2,
+  "timestamp": "2026-11-09T12:38:16Z"
+}

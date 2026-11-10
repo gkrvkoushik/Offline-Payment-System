@@ -1,0 +1,14 @@
+{
+  "processor": "Intel64 Family 6 Model 183 Stepping 1, GenuineIntel",
+  "cpu_cores": 16,
+  "operating_system": "Windows 11 (10.0.26200)",
+  "python_version": "3.12.4",
+  "blockchain_client": "LocalEVM/v1.0.0-Cancun/JSON-RPC",
+  "chain_configuration": {
+    "chain_id": 1337,
+    "contract_address": "0x5FbDB2315678afecb367f032d93F642f64180aa3",
+    "block_time_seconds": 2,
+    "block_gas_limit": 30000000
+  },
+  "benchmark_repetitions": 15
+}

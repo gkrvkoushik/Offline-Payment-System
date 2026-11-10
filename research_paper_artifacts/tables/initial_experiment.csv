@@ -1,0 +1,4 @@
+policy,total_claims_count,eligible_claims_count,mule_payout_paise,mule_payout_inr,merchant_a_payout_paise,merchant_a_inr,merchant_b_payout_paise,merchant_b_inr,total_payout_paise,total_payout_inr,honest_recovery_rate,attacker_profit_paise,attacker_profit_inr
+FC,3,3,50000,500.00,0,0.00,0,0.00,50000,500.00,0.0000,100000,1000.00
+PR,3,3,33334,333.34,33333,333.33,33333,333.33,100000,1000.00,0.6667,33334,333.34
+PL,3,3,50000,500.00,50000,500.00,0,0.00,100000,1000.00,0.5000,50000,500.00

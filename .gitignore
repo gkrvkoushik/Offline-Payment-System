@@ -1,0 +1,122 @@
+# ==============================================================================
+# Git Ignore Configuration - Hybrid Offline Payment Simulator
+# ==============================================================================
+
+# ------------------------------------------------------------------------------
+# Python & Bytecode
+# ------------------------------------------------------------------------------
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+*.pyd
+
+# Packaging & Distribution (Root-level only to preserve blockchain/build/)
+/build/
+dist/
+wheels/
+*.egg-info/
+*.egg
+
+# Virtual Environments
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Testing & Coverage
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+*.cover
+
+# Type Checking & Linters
+.mypy_cache/
+.ruff_cache/
+.dmypy.json
+dmypy.json
+
+# ------------------------------------------------------------------------------
+# Node.js & Hardhat / Blockchain
+# ------------------------------------------------------------------------------
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Hardhat build artifacts & cache (Root-level only to preserve research_paper_artifacts/)
+/artifacts/
+cache/
+typechain/
+typechain-types/
+
+# Ensure compiled contract artifacts required by simulator are tracked
+!blockchain/build/
+!blockchain/build/PaymentAuditAnchor.json
+
+# ------------------------------------------------------------------------------
+# Logs & Ephemeral Test Runs
+# ------------------------------------------------------------------------------
+*.log
+!test_execution.log
+
+# Ephemeral reproduction directory generated during audit reconciliation
+results/reproduced_adversarial_evaluation/
+
+# Temporary / Scratch files and SQLite databases
+*.db
+*.sqlite
+*.sqlite3
+scratch/
+tmp/
+temp/
+
+# ------------------------------------------------------------------------------
+# Environment Variables & Secrets
+# ------------------------------------------------------------------------------
+.env
+.env.*
+!.env.example
+
+# ------------------------------------------------------------------------------
+# Operating System Artifacts
+# ------------------------------------------------------------------------------
+# Windows
+Thumbs.db
+Thumbs.db:encryptable
+ehthumbs.db
+ehthumbs_vista.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+._*
+.Spotlight-V100
+.Trashes
+
+# Linux
+*~
+
+# ------------------------------------------------------------------------------
+# IDE & Editor Configurations
+# ------------------------------------------------------------------------------
+.vscode/
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+.idea/
+*.sublime-workspace
+*.sublime-project
+*.swp
+*.swo
